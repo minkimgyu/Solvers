@@ -11,7 +11,12 @@ public class SelectSceneController : MonoBehaviour
     [SerializeField] TMP_Text _welcomeTxt;
 
     [SerializeField] Button _calendarBtn;
-    [SerializeField] Button _blogBtn;
+    [SerializeField] Button _blogPurposeSelectBtn;
+
+    [SerializeField] GameObject _blogPurposeSelection;
+    [SerializeField] Button _blogPostBtn;
+    [SerializeField] Button _viewPostBtn;
+    [SerializeField] Button _closeBtn;
 
     [SerializeField] Button _backBtn;
 
@@ -21,13 +26,32 @@ public class SelectSceneController : MonoBehaviour
         _welcomeTxt.text = "Welcome " + UserManager.Instance.UserData.handle + "!";
 
         _calendarBtn.onClick.AddListener(() => GoToCalendarSceneRequested());
-        _blogBtn.onClick.AddListener(() => GoToBlogSceneRequested());
+        _blogPurposeSelectBtn.onClick.AddListener(() => OpenBlogPurposeSelectionObject());
+
+        _blogPostBtn.onClick.AddListener(() => GoToBlogPostSceneRequested());
+        _viewPostBtn.onClick.AddListener(() => GoToViewPostSceneRequested());
+        _closeBtn.onClick.AddListener(() => CloseBlogPurposeSelectionObject());
+
         _backBtn.onClick.AddListener(() => OnBackToEntryRequested());
     }
-
-    void GoToBlogSceneRequested()
+    void OpenBlogPurposeSelectionObject()
     {
-        SceneManager.LoadScene("BlogScene");
+        _blogPurposeSelection.SetActive(true);
+    }
+
+    void CloseBlogPurposeSelectionObject()
+    {
+        _blogPurposeSelection.SetActive(false);
+    }
+
+    void GoToBlogPostSceneRequested()
+    {
+        SceneManager.LoadScene("BlogPostScene");
+    }
+
+    void GoToViewPostSceneRequested()
+    {
+        SceneManager.LoadScene("ViewPostScene");
     }
 
     void GoToCalendarSceneRequested()
