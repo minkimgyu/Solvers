@@ -732,7 +732,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 650, y: 300}
+  m_SizeDelta: {x: 500, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1014170149
 MonoBehaviour:
@@ -773,7 +773,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1014170150}
   m_OnClick:
     m_PersistentCalls:
@@ -1071,6 +1071,7 @@ MonoBehaviour:
   _welcomeTxt: {fileID: 2111945338}
   _calendarBtn: {fileID: 1492957714}
   _blogBtn: {fileID: 1014170149}
+  _closeBtn: {fileID: 0}
   _backBtn: {fileID: 1323134627}
 --- !u!4 &1339626553
 Transform:
@@ -1124,7 +1125,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 650, y: 300}
+  m_SizeDelta: {x: 500, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1492957714
 MonoBehaviour:
