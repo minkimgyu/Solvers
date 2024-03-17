@@ -43,6 +43,7 @@ namespace SOLVERS.DATA
         public bool isReverseRival;
     }
 
+    [Serializable]
     public class ProblemData
     {
         public ProblemData(int problemId, string titleKo, string rank, string date ) 
@@ -59,65 +60,123 @@ namespace SOLVERS.DATA
         public string date;
     }
 
+    [Serializable]
+    public class RegisterData
+    {
+        public RegisterData(string userName, string registerDate)
+        {
+            this.userName = userName;
+            this.registerDate = registerDate;
+        }
+
+        public string userName;
+        public string registerDate;
+    }
+
     public enum ORDER 
     {
         DELETEROW,
         INSERTROW,
-        CHANGEROW
-    }
+        CHANGEROW,
+        CONTAINROW,
 
-    public class BaseOrder
-    {
-        public BaseOrder(string sheetName, string type) { this.sheetName = sheetName; this.type = type; }
-
-        public string sheetName;
-        public string type;
+        READSHEET,
+        ADDSOLVEDDATA
     }
 
     [Serializable]
-    public class DeleteRowOrder : BaseOrder
+    public class BaseOrder
     {
-        public DeleteRowOrder(string sheetName, string lable, string value) : base(sheetName, ORDER.DELETEROW.ToString())
+        public BaseOrder(string type) { this.type = type; }
+
+        public string type;
+    }
+
+
+    [Serializable]
+    public class AppendSolvedDataOrder : BaseOrder
+    {
+        public AppendSolvedDataOrder(string userName) :base(ORDER.ADDSOLVEDDATA.ToString())
         {
-            this.lable = lable;
+            this.userName = userName;
+        }
+
+        public string userName;
+    }
+
+    [Serializable]
+    public class SheetOrder : BaseOrder
+    {
+        public SheetOrder(string sheetName, string type) : base(type) { this.sheetName = sheetName; }
+
+        public string sheetName;
+    }
+
+    [Serializable]
+    public class ReadSheetOrder : SheetOrder
+    {
+        public ReadSheetOrder(string sheetName) : base(sheetName, ORDER.READSHEET.ToString())
+        {
+        }
+    }
+
+    [Serializable]
+    public class ContainRowOrder : SheetOrder
+    {
+        public ContainRowOrder(string sheetName, string title, string value) : base(sheetName, ORDER.CONTAINROW.ToString())
+        {
+            this.title = title;
             this.value = value;
         }
 
-        public string lable;
+        public string title;
         public string value;
     }
 
     [Serializable]
-    public class ChangeRowOrder : BaseOrder
+    abstract public class ModifySheetOrder : SheetOrder
     {
-        public ChangeRowOrder(string sheetName, string lable, string beforeValue, string afterValue) : base(sheetName, ORDER.CHANGEROW.ToString())
+        public ModifySheetOrder(string sheetName, string type) : base(sheetName, type)
         {
-            this.lable = lable;
+        }
+    }
+
+    [Serializable]
+    public class DeleteRowOrder : ModifySheetOrder
+    {
+        public DeleteRowOrder(string sheetName, string title, string value) : base(sheetName, ORDER.DELETEROW.ToString())
+        {
+            this.title = title;
+            this.value = value;
+        }
+
+        public string title;
+        public string value;
+    }
+
+    [Serializable]
+    public class ChangeRowOrder : ModifySheetOrder
+    {
+        public ChangeRowOrder(string sheetName, string title, string beforeValue, string afterValue) : base(sheetName, ORDER.CHANGEROW.ToString())
+        {
+            this.title = title;
             this.beforeValue = beforeValue;
             this.afterValue = afterValue;
         }
 
-        public string lable;
+        public string title;
         public string beforeValue;
         public string afterValue;
     }
 
     [Serializable]
-    public class InsertRowOrder : BaseOrder
+    public class InsertRowOrder<T> : ModifySheetOrder
     {
-        public InsertRowOrder(string sheetName, int index, string title, string writer, string url, string detail) : base(sheetName, ORDER.INSERTROW.ToString())
-        {
-            this.index = index;
-            this.title = title;
-            this.writer = writer;
-            this.url = url;
-            this.detail = detail;
-        }
+        public T container;
 
-        public int index;
-        public string title;
-        public string writer;
-        public string url;
-        public string detail;
+        public InsertRowOrder(string sheetName, T data) : base(sheetName, ORDER.INSERTROW.ToString())
+        {
+            container = data;
+        }
     }
 }

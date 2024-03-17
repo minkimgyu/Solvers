@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
-using SOLVERS.MANAGER;
+using SOLVERS.Manager;
 
 public class SelectSceneController : MonoBehaviour
 {

@@ -8,8 +8,9 @@ namespace SOLVERS.FSM
     {
         public override void OnMessageRequested(string info) { }
 
-        public override void BackToEntry() { }
-
+        public override void OnClickBackBtn() { }
+        public override void OnClickSwitchStateBtn() { }
+        public override void OnClickApplyBtn() { }
 
         public override void CheckStateChange() { }
         public override void OnStateEnter() { }
@@ -21,7 +22,9 @@ namespace SOLVERS.FSM
     {
         public abstract void OnMessageRequested(string info);
 
-        public abstract void BackToEntry();
+        public abstract void OnClickBackBtn();
+        public abstract void OnClickSwitchStateBtn();
+        public abstract void OnClickApplyBtn();
 
         public abstract void CheckStateChange();
         public abstract void OnStateEnter();
@@ -52,10 +55,22 @@ namespace SOLVERS.FSM
             _currentState.CheckStateChange();
         }
 
-        public void BackToEntry()
+        public void OnClickBackBtn()
         {
             if (_currentState == null) return;
-            _currentState.BackToEntry();
+            _currentState.OnClickBackBtn();
+        }
+
+        public void OnClickSwitchStateBtn()
+        {
+            if (_currentState == null) return;
+            _currentState.OnClickSwitchStateBtn();
+        }
+
+        public void OnClickApplyBtn()
+        {
+            if (_currentState == null) return;
+            _currentState.OnClickApplyBtn();
         }
 
         public bool RevertToPreviousState()

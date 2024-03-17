@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using SOLVERS.CONTROLLER;
+using SOLVERS.Controller;
 using DG.Tweening;
 
 namespace SOLVERS.FSM.STATE
@@ -23,17 +23,19 @@ namespace SOLVERS.FSM.STATE
         public override void OnStateEnter() 
         {
             _startSceneController.StartGo.SetActive(true);
+            _startSceneController.TaskGo.SetActive(false);
+            _startSceneController.BackBtnGo.gameObject.SetActive(false);
             FadeOut();
         }
 
         void FadeIn()
         {
-            _startSceneController.PressTxt.DOColor(new Color(0, 0, 0, 1), 1.3f).onComplete += FadeOut;
+            _startSceneController.PressTxt.DOColor(new Color(1, 1, 1, 1), 1.3f).onComplete += FadeOut;
         }
 
         void FadeOut()
         {
-            _startSceneController.PressTxt.DOColor(new Color(0, 0, 0, 0), 1.3f).onComplete += FadeIn;
+            _startSceneController.PressTxt.DOColor(new Color(1, 1, 1, 0), 1.3f).onComplete += FadeIn;
         }
 
         void ClearTweening()
