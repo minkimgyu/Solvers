@@ -2182,6 +2182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1820241084}
   - component: {fileID: 1820241085}
+  - component: {fileID: 1820241088}
   - component: {fileID: 1820241087}
   m_Layer: 0
   m_Name: UserManager
@@ -2218,8 +2219,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf9901af0f85704d9985a01efb4eed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _popUpParent: {fileID: 579132611}
-  _popUpPrefab: {fileID: 1463755117374225714, guid: 3411406135b96b24f80ce943f28c5f82, type: 3}
   _userData:
     handle: 
     bio: 
@@ -2247,6 +2246,8 @@ MonoBehaviour:
     rank: 0
     isRival: 0
     isReverseRival: 0
+  _registerDate: 
+  _problemDatas: []
 --- !u!114 &1820241087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2259,6 +2260,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d84988b8a150e40a9a118f9eef412d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1820241088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820241083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27e4c430b1951948a7b55530c2f3b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _popUpParent: {fileID: 579132611}
+  _popUpPrefab: {fileID: 1463755117374225714, guid: 3411406135b96b24f80ce943f28c5f82, type: 3}
 --- !u!224 &1832161446 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2758109566289035570, guid: 6cc768105abd940419a8d8c389b2c9ed, type: 3}
@@ -2513,5 +2528,5 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 636550039}
   - {fileID: 547654631}
-  - {fileID: 758664232}
   - {fileID: 1820241084}
+  - {fileID: 758664232}

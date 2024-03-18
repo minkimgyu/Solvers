@@ -1,5 +1,5 @@
-using SOLVERS.FSM;
-using SOLVERS.FSM.STATE;
+using SOLVERS.Fsm;
+using SOLVERS.Fsm.StartSceneState;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -58,8 +58,6 @@ namespace SOLVERS.Controller
 
             _switchStateBtn.onClick.AddListener(() => OnClickSwitchStateBtnRequested()); // 싱글톤 받아서 로그인 기능 추가
             InitializeFSM();
-
-
         }
 
         void InitializeFSM()

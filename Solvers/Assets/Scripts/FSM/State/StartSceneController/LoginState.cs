@@ -4,7 +4,7 @@ using UnityEngine;
 using SOLVERS.Controller;
 using SOLVERS.Manager;
 
-namespace SOLVERS.FSM.STATE
+namespace SOLVERS.Fsm.StartSceneState
 {
     public class LoginState : TaskState
     {

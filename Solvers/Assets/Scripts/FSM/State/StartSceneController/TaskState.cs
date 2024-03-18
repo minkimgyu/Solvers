@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using SOLVERS.Controller;
 
-namespace SOLVERS.FSM.STATE
+namespace SOLVERS.Fsm.StartSceneState
 {
     public class TaskState : State
     {
