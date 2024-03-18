@@ -15,6 +15,7 @@ public class SelectSceneController : MonoBehaviour
 
     [SerializeField] Button _backBtn;
 
+    // Start is called before the first frame update
     void Start()
     {
         _welcomeTxt.text = "Welcome " + UserManager.Instance.UserData.handle + "!";

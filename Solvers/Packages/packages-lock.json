@@ -1,13 +1,5 @@
 {
   "dependencies": {
-    "com.shlifedev.ugs": {
-      "version": "file:C:/Users/zinol/Downloads/uni-google-sheets-main/uni-google-sheets-main/src",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "2.0.0"
-      }
-    },
     "com.unity.2d.animation": {
       "version": "9.0.4",
       "depth": 1,
