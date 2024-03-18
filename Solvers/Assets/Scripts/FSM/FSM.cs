@@ -2,13 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SOLVERS.FSM
+namespace SOLVERS.Fsm
 {
     abstract public class State : BaseState
     {
         public override void OnMessageRequested(string info) { }
 
-        public override void BackToEntry() { }
+        public override void OnClickBackBtn() { }
+        public override void OnClickSwitchStateBtn() { }
+        public override void OnClickApplyBtn() { }
+
+        // RequestController
+        public override void OnLoginRequested(string userName) { }
+        public override void OnRegisterRequested(string userName) { }
 
 
         public override void CheckStateChange() { }
@@ -21,7 +27,14 @@ namespace SOLVERS.FSM
     {
         public abstract void OnMessageRequested(string info);
 
-        public abstract void BackToEntry();
+        public abstract void OnClickBackBtn();
+        public abstract void OnClickSwitchStateBtn();
+        public abstract void OnClickApplyBtn();
+
+        // RequestController
+        public abstract void OnLoginRequested(string userName);
+        public abstract void OnRegisterRequested(string userName);
+
 
         public abstract void CheckStateChange();
         public abstract void OnStateEnter();
@@ -52,10 +65,36 @@ namespace SOLVERS.FSM
             _currentState.CheckStateChange();
         }
 
-        public void BackToEntry()
+
+        public void OnLogin(string userName)
         {
             if (_currentState == null) return;
-            _currentState.BackToEntry();
+            _currentState.OnLoginRequested(userName);
+        }
+
+        public void OnRegister(string userName)
+        {
+            if (_currentState == null) return;
+            _currentState.OnRegisterRequested(userName);
+        }
+
+
+        public void OnClickBackBtn()
+        {
+            if (_currentState == null) return;
+            _currentState.OnClickBackBtn();
+        }
+
+        public void OnClickSwitchStateBtn()
+        {
+            if (_currentState == null) return;
+            _currentState.OnClickSwitchStateBtn();
+        }
+
+        public void OnClickApplyBtn()
+        {
+            if (_currentState == null) return;
+            _currentState.OnClickApplyBtn();
         }
 
         public bool RevertToPreviousState()

@@ -1,92 +1,124 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
+using System;
+using SOLVERS.Manager;
+using SOLVERS.DATA;
 
 public class Calendar : MonoBehaviour
 {
     [SerializeField] Transform _dateParent;
     [SerializeField] Date _datePrefab;
+
+    [SerializeField] TMP_Text _yearTxt;
     [SerializeField] TMP_Text _monthTxt;
 
+    [SerializeField] Button _leftBtn;
+    [SerializeField] Button _RightBtn;
+
     [SerializeField] int _year;
+    int Year { get { return _year; } set { _year = value; _yearTxt.text = _year.ToString(); } }
+
     [SerializeField] int _month;
+    int Month { get { return _month; } set { _month = value; _monthTxt.text = _month.ToString(); } }
+
     [SerializeField] int _date;
+
 
     List<Date> _dates = new List<Date>();
 
     const int _rowCount = 5;
     const int _columnCount = 7;
 
-    int[] dayOfMonth = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-
-    int GetBeforeMonth(int month) 
+    void resetMonth(bool nowUp)
     {
-        if (month == 1) return 12;
-        else return month - 1;
-    }
+        if (nowUp)
+        {
+            if (Month == 12)
+            {
+                Year += 1;
+                Month = 1;
+                return;
+            }
 
-    public enum Day
-    {
-        Monday,
-        Tuesday,
-        Wednesday,
-        Thursday,
-        Friday,
-        Saturday,
-        Sunday
+            Month += 1;
+        }
+        else
+        {
+            if (Month == 1)
+            {
+                Year -= 1;
+                Month = 12;
+                return;
+            }
+
+            Month -= 1;
+        }
     }
 
     private void Start()
     {
-        //_month = int.Parse(System.DateTime.Now.ToString("MM"));
-        //_date = int.Parse(System.DateTime.Now.ToString("dd"));
+        Year = int.Parse(System.DateTime.Now.ToString("yyyy"));
+        Month = int.Parse(System.DateTime.Now.ToString("MM"));
+        _date = int.Parse(System.DateTime.Now.ToString("dd"));
 
-        _monthTxt.text = _month.ToString();
+        _leftBtn.onClick.AddListener(() => { resetMonth(false); ResetCalendar(); });
+        _RightBtn.onClick.AddListener(() => { resetMonth(true); ResetCalendar(); });
+
         Initialize();
     }
 
-    int GetDayOfMonth(int year, int month)
+    DateTime ReturnMonthStartDate()
     {
-        dayOfMonth[1] += IsLeafYear(year);
-        return dayOfMonth[month - 1];
+        DateTime day = new DateTime(Year, Month, 1);
+        int dayOfWeek = (int)day.DayOfWeek;
+        return day.AddDays(-dayOfWeek); // 달력의 처음부터 시작함
     }
 
-    int GetDay(int year, int month)
+    DateTime ConvertStringToDateTime(string dateTime) { return DateTime.Parse(dateTime); }
+
+    string ReturnProblemNumbers(DateTime startDateTime)
     {
-        int past = 0;
-        for (int i = 1; i < year; i++) past = past + 365 + IsLeafYear(i);
-        for (int j = 1; j < month; j++) past = past + GetDayOfMonth(year, j);
-        return past % 7;
+        string problemNum = "";
+        if(startDateTime == ConvertStringToDateTime(UserManager.Instance.RegisterDate)) return problemNum; // 등록 날짜와 같다면 리턴
+
+        List<ProblemData> problemDatas = UserManager.Instance.ProblemDatas.FindAll(x => ConvertStringToDateTime(x.date) == startDateTime);
+        for (int j = 0; j < problemDatas.Count; j++)
+        {
+            if (j == problemDatas.Count - 1) problemNum += problemDatas[j].problemId;
+            else problemNum += problemDatas[j].problemId + ", ";
+        }
+
+        return problemNum;
     }
 
-    int IsLeafYear(int year)
+    void ResetCalendar()
     {
-        if (year % 400 == 0) return 1;
-        if ((year % 100 != 0) && (year % 4 == 0)) return 1;
-        return 0;
+        DateTime startDateTime = ReturnMonthStartDate();
+        for (int i = 0; i < _dates.Count; i++)
+        {
+            string problemNum = ReturnProblemNumbers(startDateTime);
+            _dates[i].ResetTxt(Month, startDateTime, problemNum);
+            startDateTime = startDateTime.AddDays(1);
+        }
     }
 
     public void Initialize()
     {
-        //int beforeMonth = GetBeforeMonth(_month);
-        //dayOfMonth[beforeMonth - 1];
-        int startNum1 = 1;
-
-        int startNum = GetDay(_year, _month);
-        Debug.Log(startNum);
+        DateTime startDateTime = ReturnMonthStartDate();
 
         int count = _rowCount * _columnCount;
-        for (int i = 1; i <= count; i++)
+        for (int i = 0; i < count; i++)
         {
             Date date = Instantiate(_datePrefab, _dateParent);
-            if(i > startNum && startNum1 <= dayOfMonth[_month - 1])
-            {
-                date.ResetTxt(startNum1);
-                startNum1++;
-            }
-
             _dates.Add(date);
+
+            string problemNum = ReturnProblemNumbers(startDateTime);
+            date.ResetTxt(Month, startDateTime, problemNum);
+
+            startDateTime = startDateTime.AddDays(1);
         }
     }
 }

@@ -2,56 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SOLVERS.DATA;
-using SOLVERS.RECEIVER;
 using System;
-using UnityEngine.SceneManagement;
+using SOLVERS.Controller;
 
-namespace SOLVERS.MANAGER
+namespace SOLVERS.Manager
 {
     // ΩÃ±€≈Ê¿∏∑Œ ∏∏µÈ±‚
     public class UserManager : Singleton<UserManager>
     {
-        WebRequestReceiver _webRequestReceiver;
-        JsonParser _jsonParser;
-
         [SerializeField] UserData _userData;
-        public UserData UserData { get { return _userData; } }
+        public UserData UserData { get { return _userData; } set { _userData = value; } }
+
+        [SerializeField] string _registerDate;
+        public string RegisterDate { get { return _registerDate; } set { _registerDate = value; } }
+
+        [SerializeField] List<ProblemData> _problemDatas;
+        public List<ProblemData> ProblemDatas { get { return _problemDatas; } set { _problemDatas = value; } }
+
+        RequestController _requestController;
 
         // Start is called before the first frame update
         void Start()
         {
-            _webRequestReceiver = GetComponent<WebRequestReceiver>();
-            _jsonParser = GetComponent<JsonParser>();
+            _requestController = GetComponent<RequestController>();
+            _requestController.Initialize();
         }
 
         public static void ClearLoginData()
         {
             _instance._userData = null;
+            _instance._registerDate = null;
+            _instance._problemDatas = null;
         }
 
         public static void Login(string userName)
         {
-            _instance._webRequestReceiver.OnWebDataRequested(userName, WebRequestReceiver.Type.User, _instance.OnUserDataRequested);
-            //_instance._webRequestReceiver.OnWebDataRequested(userName, WebRequestReceiver.Type.ProblemStat, _instance.OnProblemStatRequested);
-            //_instance._webRequestReceiver.OnWebDataRequested(userName, WebRequestReceiver.Type.Top100, _instance.OnTop100Requested);
+            _instance._requestController.OnLogin(userName);
         }
 
-        void OnUserDataRequested(string json)
+        public static void Register(string userName)
         {
-            _userData = _jsonParser.ConvertJsonToData<UserData>(json);
-            SceneManager.LoadScene("SelectScene");
-        }
-
-        void OnProblemStatRequested(string json)
-        {
-            _userData = _jsonParser.ConvertJsonToData<UserData>(json);
-            SceneManager.LoadScene("SelectScene");
-        }
-
-        void OnTop100Requested(string json)
-        {
-            _userData = _jsonParser.ConvertJsonToData<UserData>(json);
-            SceneManager.LoadScene("SelectScene");
+            _instance._requestController.OnRegister(userName);
         }
     }
 }
