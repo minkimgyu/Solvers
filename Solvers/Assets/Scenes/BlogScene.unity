@@ -156,7 +156,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0000306166}
+  m_AnchoredPosition: {x: 0, y: 0.000028630631}
   m_SizeDelta: {x: -1, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &27885211
@@ -489,6 +489,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2758109566289035570, guid: 6cc768105abd940419a8d8c389b2c9ed, type: 3}
   m_PrefabInstance: {fileID: 184082091}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &184082093 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1479674751446422893, guid: 6cc768105abd940419a8d8c389b2c9ed, type: 3}
+  m_PrefabInstance: {fileID: 184082091}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &377949778
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,7 +907,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 780428325}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.99998707
+  m_Size: 0.999998
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1300,7 +1311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f172d789e03964b9799b623bedeced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _backBtn: {fileID: 0}
+  _backBtn: {fileID: 184082093}
   _uploadBtn: {fileID: 419998926}
 --- !u!4 &1719655375
 Transform:
