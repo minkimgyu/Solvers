@@ -17,11 +17,29 @@
 ## 기능 설명
 
 <details>
+	<summary>Google Sheet를 이용한 데이터 저장</summary>
+    
+   트리거 내용 넣기
+   
+</details>
+
+
+<details>
+	<summary>로그인, 회원 가입</summary>
+    
+   내용을 적어주세요.
+   
+</details>
+
+
+
+<details>
 	<summary>MVC 패턴 적용</summary>
     
    내용을 적어주세요.
    
 </details>
+
 
 <details>
 	<summary>FSM을 활용한 Scene State 관리</summary>
@@ -31,14 +49,7 @@
 </details>
 
 <details>
-	<summary>로그인, 회원 가입</summary>
-    
-   내용을 적어주세요.
-   
-</details>
-
-<details>
-	<summary>Google Sheet를 이용한 데이터 저장</summary>
+	<summary>Post 방식으로 데이터 불러오기</summary>
     
    트리거 내용 넣기
    
