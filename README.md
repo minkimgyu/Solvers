@@ -69,7 +69,7 @@ void InitializeFSM()
 }
 
 ```
-<div align="center">FSM을 활용하여 각 Scene의 State를 효율적으로 관리했습니다.</div>
+<div align="center">FSM을 활용하여 각 Scene의 State를 관리했습니다.</div>
    
 </details>
 
