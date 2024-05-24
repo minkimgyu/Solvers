@@ -44,7 +44,32 @@ solved.ac API를 사용하여 백준 유저 정보를 불러와서 언제 어떤
 <details>
 	<summary>FSM을 활용한 Scene State 관리</summary>
     
-   내용을 적어주세요.
+
+``` cs
+
+public enum State
+{
+    Entry,
+    Login,
+    Register
+}
+
+void InitializeFSM()
+{
+    Dictionary<State, BaseState> states = new Dictionary<State, BaseState>()
+    {
+	{State.Entry, new EntryState(this)},
+	{State.Login, new LoginState(this, "Login", "Sign In", "Register", State.Register)},
+	{State.Register, new RegisterState(this, "Register", "Sign Up", "Login", State.Login)},
+    };
+
+    _fsm = new StateMachine<State>();
+    _fsm.Initialize(states);
+    _fsm.SetState(State.Entry);
+}
+
+```
+<div align="center">FSM을 활용하여 각 Scene의 State를 효율적으로 관리했습니다.</div>
    
 </details>
 
