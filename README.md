@@ -25,7 +25,7 @@
 
 
 <details>
-	<summary>로그인, 회원 가입</summary>
+	<summary>로그인, 회원 가입 및 데이터 불러오기</summary>
     
    내용을 적어주세요.
    
@@ -48,11 +48,12 @@
    
 </details>
 
-<details>
-	<summary>Post 방식으로 데이터 불러오기</summary>
-    
-   트리거 내용 넣기
-   
-</details>
-
 ## 회고
+
+Google Sheet를 사용하여 데이터를 저장하고 불러오는 기능을 처음 구현해보았습니다. 이 과정에서 Google Apps Script를 새롭개 배우게 되었습니다.
+
+
+데이터를 Google Sheet에 전달하거나 불러오기 위해 UnityWebRequest를 사용해보았습니다. 이 과정에서 GET 방식과 POST 방식에 대해 배우게 되었습니다.
+
+
+
