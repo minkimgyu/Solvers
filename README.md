@@ -50,10 +50,8 @@
 
 ## 회고
 
-Google Sheet를 사용하여 데이터를 저장하고 불러오는 기능을 처음 구현해보았습니다. 이 과정에서 Google Apps Script를 새롭개 배우게 되었습니다.
-
-
-데이터를 Google Sheet에 전달하거나 불러오기 위해 UnityWebRequest를 사용해보았습니다. 이 과정에서 GET 방식과 POST 방식에 대해 배우게 되었습니다.
+* Google Sheet를 사용하여 데이터를 저장하고 불러오는 기능을 처음 구현해보았습니다. 이 과정에서 Google Apps Script를 새롭개 배우게 되었습니다.
+* 클라이언트에서 데이터를 전달하거나 불러오기 위해 UnityWebRequest를 사용해보았습니다. 이 과정에서 GET 방식과 POST 방식에 대해 배우게 되었습니다.
 
 
 
