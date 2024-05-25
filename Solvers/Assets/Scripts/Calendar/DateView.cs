@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class Date : MonoBehaviour
+public class DateView : MonoBehaviour
 {
     [SerializeField] TMP_Text _dateTxt;
     [SerializeField] TMP_Text _solvedProblemTxt;

@@ -7,10 +7,10 @@ using System;
 using SOLVERS.Manager;
 using SOLVERS.DATA;
 
-public class Calendar : MonoBehaviour
+public class CalendarController : MonoBehaviour
 {
     [SerializeField] Transform _dateParent;
-    [SerializeField] Date _datePrefab;
+    [SerializeField] DateView _datePrefab;
 
     [SerializeField] TMP_Text _yearTxt;
     [SerializeField] TMP_Text _monthTxt;
@@ -24,15 +24,12 @@ public class Calendar : MonoBehaviour
     [SerializeField] int _month;
     int Month { get { return _month; } set { _month = value; _monthTxt.text = _month.ToString(); } }
 
-    [SerializeField] int _date;
-
-
-    List<Date> _dates = new List<Date>();
+    List<DateView> _dates = new List<DateView>();
 
     const int _rowCount = 5;
     const int _columnCount = 7;
 
-    void resetMonth(bool nowUp)
+    void ResetMonth(bool nowUp)
     {
         if (nowUp)
         {
@@ -62,10 +59,9 @@ public class Calendar : MonoBehaviour
     {
         Year = int.Parse(System.DateTime.Now.ToString("yyyy"));
         Month = int.Parse(System.DateTime.Now.ToString("MM"));
-        _date = int.Parse(System.DateTime.Now.ToString("dd"));
 
-        _leftBtn.onClick.AddListener(() => { resetMonth(false); ResetCalendar(); });
-        _RightBtn.onClick.AddListener(() => { resetMonth(true); ResetCalendar(); });
+        _leftBtn.onClick.AddListener(() => { ResetMonth(false); ResetCalendar(); });
+        _RightBtn.onClick.AddListener(() => { ResetMonth(true); ResetCalendar(); });
 
         Initialize();
     }
@@ -112,7 +108,7 @@ public class Calendar : MonoBehaviour
         int count = _rowCount * _columnCount;
         for (int i = 0; i < count; i++)
         {
-            Date date = Instantiate(_datePrefab, _dateParent);
+            DateView date = Instantiate(_datePrefab, _dateParent);
             _dates.Add(date);
 
             string problemNum = ReturnProblemNumbers(startDateTime);
