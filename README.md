@@ -92,5 +92,5 @@ Google Apps Script에서 FSM을 사용하여 전달받은 데이터를 통해 Go
 
 ## 회고
 
-* Google Sheet를 사용하여 데이터를 저장하고 불러오는 기능을 구현해보면서 Google Apps Script를 새롭게 배우게 되었습니다.
+* Google Sheet를 사용하여 데이터를 저장하고 불러오는 기능을 구현해보면서 Google Apps Script에 대해 새롭게 배우게 되었습니다.
 * 클라이언트에서 데이터를 전달하거나 불러오기 위해 UnityWebRequest를 사용해보았습니다. 처음 해보는 작업이라 많은 시행착오를 거쳤지만 앞으로 비슷한 프로젝트를 진행한다면 수월하게 진행할 수 있을 것 같습니다.
