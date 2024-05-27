@@ -22,8 +22,6 @@ Google Apps Script를 활용해 solved.ac API에서 유저 데이터를 받아�
 
 <img src="https://github.com/minkimgyu/Solvers/assets/48249824/0ad5f5d2-416b-4fb9-8dff-cb302cda42f8" width="90%" height="90%"/>
 </br>
-예시 코드
-</br>
 
 ```js
 function ParsingSolvedData(userName, page)
@@ -37,26 +35,47 @@ function ParsingSolvedData(userName, page)
   return data
 }
 ```
+</br>
+
+* ### UnityWebRequest를 활용한 로그인, 회원 가입 기능
+
+<div align="center">
+	<a href="https://github.com/minkimgyu/Solvers/blob/994819e8a69321d16489c4647f3fdc4b05494375/Solvers/Assets/Scripts/WebRequestComponent.cs#L11">코드 보러가기</a>
+</div>
+
+</br>
+UnityWebRequest를 사용하여 GET, Post 방식으로 Google Sheet의 데이터를 불러오거나 전달할 수 있도록 구현하였습니다.
+</br>
+
+```js
+function doPost(e)
+{
+  var data = JSON.parse(e.parameter.json);
+  var sheet = sheetId.getSheetByName(data.sheetName);
+
+  switch(data.type)
+  {
+    case ORDER.DELETEROW : return DeleteRow(sheet, data.title, data.value, data.type);
+    case ORDER.INSERTROW : return InsertRow(sheet, data);
+    case ORDER.CHANGEROW : return ChangeRow(sheet, data.title, data.beforeValue, data.afterValue, data.type);
+    case ORDER.CONTAINROW : return ContainRow(sheet, data.title, data.value);
+    case ORDER.READSHEET : return ReadSheet(sheet);
+    case ORDER.ADDSOLVEDDATA : return AddSolvedData(data.userName);
+  }
+}
+```
+</br>
+FSM을 사용하여 전달받은 데이터를 통해 Google Sheet의 값을 변경해줍니다.
+</br>
+
+* ### MVC 패턴 적용
+
+  
+
+* ### FSM을 활용한 Scene State 관리
 
 
-
-데이터 불러오기을 활용한 로그인, 회원 가입 기능
-
-
-
-<details>
-	<summary>MVC 패턴 적용</summary>
     
-   내용을 적어주세요.
-   
-</details>
-
-
-<details>
-	<summary>FSM을 활용한 Scene State 관리</summary>
-    
-
-
 <div align="center">FSM을 활용하여 각 Scene의 State를 관리했습니다.</div>
    
 </details>
