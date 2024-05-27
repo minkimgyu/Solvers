@@ -22,7 +22,9 @@ Google Apps Script를 활용해 solved.ac API에서 유저 데이터를 받아�
 
 <img src="https://github.com/minkimgyu/Solvers/assets/48249824/0ad5f5d2-416b-4fb9-8dff-cb302cda42f8" width="90%" height="90%"/>
 </br>
-+ 예시 코드
+예시 코드
+</br>
+
 ```js
 function ParsingSolvedData(userName, page)
 {
