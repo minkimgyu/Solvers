@@ -1,6 +1,8 @@
 # Solvers
 교내 동아리 운영을 위해 Unity를 사용하여 개발한 학습 관리 프로그램
 
+<img src="https://github.com/minkimgyu/Solvers/assets/48249824/ada439d6-54d6-42ee-8473-aa3db6344365" width="70%" height="70%"/>
+
 ## 프로젝트 소개
 solved.ac API를 사용하여 백준 유저 정보를 불러와서 언제 어떤 문제를 풀었는지 확인할 수 있는 프로그램입니다.
 
