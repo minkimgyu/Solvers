@@ -28,6 +28,7 @@ Google Apps Script를 활용해 solved.ac API에서 유저 데이터를 받아�
 ```js
 function ParsingSolvedData(userName, page)
 {
+  // url을 통해 데이터를 불러온다.
   let url = "https://solved.ac/api/v3/search/problem?query=solved_by%3A" + userName;
   if(page) url += "&page=" + page; // GET URL
   
@@ -35,39 +36,7 @@ function ParsingSolvedData(userName, page)
   let data = JSON.parse(response.getContentText());
   return data
 }
-
-function CreateSolvedData(userName)
-{ 
-  // 해당 시트가 있는지 확인하고 없으면 생성해서 넣어주기
-  let isContaining = IsContainingSheet(userName);
-  if(isContaining == false) CreateSolvedProblemSheet(userName);
-
-  let datas = [];
-
-  var jsonData = ParsingSolvedData(userName);
-  var pages = Math.floor((jsonData.count - 1) / 50) + 1;
-  
-  var nowPage = 1;
-  while(pages >= nowPage) // 모든 페이지를 읽어온다.
-  {
-    let solvedData = ParsingSolvedData(userName, nowPage);
-    for(let i = 0; i<solvedData.items.length; i++)
-    {
-      let data = BuildProblemData(solvedData.items[i]);
-	    datas.push(data);
-    }
-    nowPage++;
-  }
-
-  var sheet = sheetId.getSheetByName(SheetForeword + userName);
-
-  if(isContaining == false) InsertRectToSheet(sheet, datas, ProblemDataType); // 처음부터 데이터를 삽입한다.
-  else UpdateSheetData(sheet, datas, ProblemDataType) // 기존 데이터를 업데이트 해준다.
-}
 ```
-
-
-
 
 
 
