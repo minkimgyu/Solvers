@@ -65,13 +65,14 @@ function doPost(e)
   }
 }
 ```
-</br>
+
 Google Apps Script에서 FSM을 사용하여 전달받은 데이터를 통해 Google Sheet의 값을 변경해줍니다.
 </br>
 
 * ### MVC 패턴 적용
 <div align="center">
 	<a href="https://github.com/minkimgyu/Solvers/blob/26d65a638c5ab4a70e8b0aa29d9516227f8584ae/Solvers/Assets/Scripts/Calendar/DateView.cs#L10">DateView 코드 보러가기</a>
+	</br>
 	<a href="https://github.com/minkimgyu/Solvers/blob/26d65a638c5ab4a70e8b0aa29d9516227f8584ae/Solvers/Assets/Scripts/Calendar/CalendarController.cs#L10C14-L10C33">CalendarController 코드 보러가기</a>
 </div>
 </br>
