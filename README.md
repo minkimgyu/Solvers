@@ -75,9 +75,11 @@ Google Apps Script에서 FSM을 사용하여 전달받은 데이터를 통해 Go
 
 * ### FSM을 활용한 Scene State 관리
 
-
-    
-<div align="center">FSM을 활용하여 각 Scene의 State를 관리했습니다.</div>
+<div align="center">
+	<a href="https://github.com/minkimgyu/Solvers/blob/05e86f8df76d3b83978d38b452241eb917fb4ab7/Solvers/Assets/Scripts/Controller/StartSceneController.cs#L10">코드 보러가기</a>
+</div>
+</br>
+<div align="center">FSM을 활용하여 StartScene의 State를 관리했습니다.</div>
    
 </details>
 
