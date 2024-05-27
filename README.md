@@ -40,11 +40,12 @@ function ParsingSolvedData(userName, page)
 * ### UnityWebRequest를 활용한 로그인, 회원 가입 기능
 
 <div align="center">
-	<a href="https://github.com/minkimgyu/Solvers/blob/994819e8a69321d16489c4647f3fdc4b05494375/Solvers/Assets/Scripts/WebRequestComponent.cs#L11">코드 보러가기</a>
+	<a href="https://github.com/minkimgyu/Solvers/blob/994819e8a69321d16489c4647f3fdc4b05494375/Solvers/Assets/Scripts/WebRequestComponent.cs#L11">UnityWebRequest 코드 보러가기</a>
 </div>
 
 </br>
 UnityWebRequest를 사용하여 GET, Post 방식으로 Google Sheet의 데이터를 불러오거나 전달할 수 있도록 구현하였습니다.
+</br>
 </br>
 
 ```js
@@ -65,7 +66,7 @@ function doPost(e)
 }
 ```
 </br>
-FSM을 사용하여 전달받은 데이터를 통해 Google Sheet의 값을 변경해줍니다.
+Google Apps Script에서 FSM을 사용하여 전달받은 데이터를 통해 Google Sheet의 값을 변경해줍니다.
 </br>
 
 * ### MVC 패턴 적용
