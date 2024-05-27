@@ -21,7 +21,8 @@ solved.ac API를 사용하여 백준 유저 정보를 불러와서 언제 어떤
 Google Apps Script를 활용해 solved.ac API에서 유저 데이터를 받아와서 Google Sheet에 저장하는 작업을 진행했습니다.
 
 <img src="https://github.com/minkimgyu/Solvers/assets/48249824/0ad5f5d2-416b-4fb9-8dff-cb302cda42f8" width="90%" height="90%"/>
-
+</br>
++ 예시 코드
 ```js
 function ParsingSolvedData(userName, page)
 {
@@ -65,12 +66,10 @@ function CreateSolvedData(userName)
 
 
 
-<details>
-	<summary>로그인, 회원 가입 및 데이터 불러오기</summary>
-    
-   내용을 적어주세요.
-   
-</details>
+
+
+
+데이터 불러오기을 활용한 로그인, 회원 가입 기능
 
 
 
