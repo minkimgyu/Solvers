@@ -18,21 +18,17 @@ public class DateView : MonoBehaviour
 
     [SerializeField] float _notSameMonthRatio = 0.1f;
 
-    void ResetUI(int month, DateTime dateTime)
+    public void UpdateViewer(DateData data)
     {
-        if (dateTime.DayOfWeek == DayOfWeek.Sunday) _dateTxt.color = _sundayColor;
-        else if (dateTime.DayOfWeek == DayOfWeek.Saturday) _dateTxt.color = _saturdayColor;
+        if (data.DateTime.DayOfWeek == DayOfWeek.Sunday) _dateTxt.color = _sundayColor;
+        else if (data.DateTime.DayOfWeek == DayOfWeek.Saturday) _dateTxt.color = _saturdayColor;
 
-        if (month != dateTime.Month) _dateTxt.color = new Color(_dateTxt.color.r, _dateTxt.color.g, _dateTxt.color.b, _notSameMonthRatio);
+        if (data.Month != data.DateTime.Month) _dateTxt.color = new Color(_dateTxt.color.r, _dateTxt.color.g, _dateTxt.color.b, _notSameMonthRatio);
         else _dateTxt.color = new Color(_dateTxt.color.r, _dateTxt.color.g, _dateTxt.color.b, 1f);
 
-        if (dateTime == DateTime.Today) _background.color = _todayBackgroundColor;
+        if (data.DateTime == DateTime.Today) _background.color = _todayBackgroundColor;
         else _background.color = Color.black;
-    }
 
-    public void ResetTxt(DateData data)
-    {
-        ResetUI(data.Month, data.DateTime);
         _dateTxt.text = data.DateTime.Day.ToString();
         _solvedProblemTxt.text = data.ProblemNum;
     }

@@ -112,7 +112,7 @@ public class CalendarController : MonoBehaviour
             string problemNum = ReturnProblemNumbers(startDateTime);
 
             DateData data = new DateData(Month, startDateTime, problemNum);
-            _dates[i].ResetTxt(data);
+            _dates[i].UpdateViewer(data);
             startDateTime = startDateTime.AddDays(1);
         }
     }
@@ -129,7 +129,7 @@ public class CalendarController : MonoBehaviour
 
             string problemNum = ReturnProblemNumbers(startDateTime);
             DateData data = new DateData(Month, startDateTime, problemNum);
-            date.ResetTxt(data);
+            date.UpdateViewer(data);
 
             startDateTime = startDateTime.AddDays(1);
         }
