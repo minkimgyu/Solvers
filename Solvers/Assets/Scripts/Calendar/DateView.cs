@@ -30,19 +30,10 @@ public class DateView : MonoBehaviour
         else _background.color = Color.black;
     }
 
-    
-
-    public void ResetTxt(int month, DateTime dateTime)
+    public void ResetTxt(DateData data)
     {
-        ResetUI(month, dateTime);
-        _dateTxt.text = dateTime.Day.ToString();
-        _solvedProblemTxt.text = "";
-    }
-
-    public void ResetTxt(int month, DateTime dateTime, string problemNum)
-    {
-        ResetUI(month, dateTime);
-        _dateTxt.text = dateTime.Day.ToString();
-        _solvedProblemTxt.text = problemNum;
+        ResetUI(data.Month, data.DateTime);
+        _dateTxt.text = data.DateTime.Day.ToString();
+        _solvedProblemTxt.text = data.ProblemNum;
     }
 }

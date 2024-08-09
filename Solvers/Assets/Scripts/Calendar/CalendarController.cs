@@ -7,6 +7,20 @@ using System;
 using SOLVERS.Manager;
 using SOLVERS.DATA;
 
+public struct DateData
+{
+    public DateData(int month, DateTime dateTime, string problemNum)
+    {
+        Month = month;
+        DateTime = dateTime;
+        ProblemNum = problemNum;
+    }
+
+    public int Month { get; }
+    public DateTime DateTime { get; }
+    public string ProblemNum { get; }
+}
+
 public class CalendarController : MonoBehaviour
 {
     [SerializeField] Transform _dateParent;
@@ -96,7 +110,9 @@ public class CalendarController : MonoBehaviour
         for (int i = 0; i < _dates.Count; i++)
         {
             string problemNum = ReturnProblemNumbers(startDateTime);
-            _dates[i].ResetTxt(Month, startDateTime, problemNum);
+
+            DateData data = new DateData(Month, startDateTime, problemNum);
+            _dates[i].ResetTxt(data);
             startDateTime = startDateTime.AddDays(1);
         }
     }
@@ -112,7 +128,8 @@ public class CalendarController : MonoBehaviour
             _dates.Add(date);
 
             string problemNum = ReturnProblemNumbers(startDateTime);
-            date.ResetTxt(Month, startDateTime, problemNum);
+            DateData data = new DateData(Month, startDateTime, problemNum);
+            date.ResetTxt(data);
 
             startDateTime = startDateTime.AddDays(1);
         }
