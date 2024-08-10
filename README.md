@@ -43,7 +43,6 @@ function ParsingSolvedData(userName, page)
 
 UnityWebRequest를 사용하여 GET, Post 방식으로 Google Sheet의 데이터를 불러오거나 전달할 수 있도록 구현하였습니다.
 
-</br>
 <div align="center">
 	<a href="https://github.com/minkimgyu/Solvers/blob/994819e8a69321d16489c4647f3fdc4b05494375/Solvers/Assets/Scripts/WebRequestComponent.cs#L11">UnityWebRequest 코드 보러가기</a>
 </div>
