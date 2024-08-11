@@ -79,13 +79,17 @@ Calendar 구현 시 View, Controller, Model을 나누어 결합도를 낮추었�
 </div>
 </br>
 
-### FSM을 사용하여 Scene State 관리
-FSM을 활용하여 StartScene의 State를 관리했습니다.
+### FSM을 사용하여 RequestController 개발
 
 <div align="center">
-	<a href="https://github.com/minkimgyu/Solvers/blob/05e86f8df76d3b83978d38b452241eb917fb4ab7/Solvers/Assets/Scripts/Controller/StartSceneController.cs#L10">코드 보러가기</a>
+	<img src="https://github.com/user-attachments/assets/33f93513-7850-4cf3-a3d1-be9a2bdb19c1" width="45%" height="45%"/>
+	</br>
 </div>
-</br>
+<div align="center">
+	<a href="https://github.com/minkimgyu/Solvers/blob/05e86f8df76d3b83978d38b452241eb917fb4ab7/Solvers/Assets/Scripts/Controller/StartSceneController.cs#L10">코드 보러가기</a>
+	</br>
+	FSM을 활용하여 사용자의 입력을 처리하는 RequestController을 개발했습니다.
+</div>
 
 </details>
 
