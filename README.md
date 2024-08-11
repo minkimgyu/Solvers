@@ -86,7 +86,7 @@ Calendar 구현 시 View, Controller, Model을 나누어 결합도를 낮추었�
 	</br>
 </div>
 <div align="center">
-	<a href="https://github.com/minkimgyu/Solvers/blob/05e86f8df76d3b83978d38b452241eb917fb4ab7/Solvers/Assets/Scripts/Controller/StartSceneController.cs#L10">코드 보러가기</a>
+	<a href="https://github.com/minkimgyu/Solvers/blob/3cf843ecc21712c45f67cd855c3b683f4e11a120/Solvers/Assets/Scripts/Controller/RequestController.cs#L9">코드 보러가기</a>
 	</br>
 	FSM을 활용하여 사용자의 입력을 처리하는 RequestController을 개발했습니다.
 </div>
