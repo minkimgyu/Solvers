@@ -70,12 +70,19 @@ Google Apps Script에서 FSM을 사용하여 전달받은 데이터를 통해 Go
 </br>
 
 ### MVC 패턴을 활용하여 달력 시스템 개발
-Calendar 구현 시 View, Controller, Model을 나누어 결합도를 낮추었습니다.
+</br>
+<div align="center">
+	<img src="https://github.com/user-attachments/assets/0870b37a-fbb4-48b5-853c-b3780d7ca294" width="45%" height="45%"/>
+	</br>
+</div>
 
 <div align="center">
 	<a href="https://github.com/minkimgyu/Solvers/blob/26d65a638c5ab4a70e8b0aa29d9516227f8584ae/Solvers/Assets/Scripts/Calendar/DateView.cs#L10">View 코드 보러가기</a>
 	</br>
 	<a href="https://github.com/minkimgyu/Solvers/blob/26d65a638c5ab4a70e8b0aa29d9516227f8584ae/Solvers/Assets/Scripts/Calendar/CalendarController.cs#L10C14-L10C33">Controller 코드 보러가기</a>
+	</br>
+	</br>
+	Calendar 구현 시 View, Controller, Model을 나누어 결합도를 낮추었습니다.
 </div>
 </br>
 
