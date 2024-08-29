@@ -18,7 +18,7 @@ solved.ac API를 사용하여 백준 유저 정보를 불러와서 언제 어떤
 
 ## 기능 설명
 
-* ### Google Apps Script를 활용하여 데이터 저장 기능 구현
+### Google Apps Script를 활용하여 데이터 저장 기능 구현
 
 Google Apps Script를 활용해 solved.ac API에서 유저 데이터를 받아와서 Google Sheet에 저장하는 작업을 진행했습니다.
 
@@ -39,15 +39,13 @@ function ParsingSolvedData(userName, page)
 ```
 </br>
 
-* ### UnityWebRequest를 활용한 로그인, 회원 가입 기능 구현
+### UnityWebRequest를 활용한 로그인, 회원 가입 기능 구현
+
+UnityWebRequest를 사용하여 GET, Post 방식으로 Google Sheet의 데이터를 불러오거나 전달할 수 있도록 구현하였습니다.
 
 <div align="center">
 	<a href="https://github.com/minkimgyu/Solvers/blob/994819e8a69321d16489c4647f3fdc4b05494375/Solvers/Assets/Scripts/WebRequestComponent.cs#L11">UnityWebRequest 코드 보러가기</a>
 </div>
-
-</br>
-UnityWebRequest를 사용하여 GET, Post 방식으로 Google Sheet의 데이터를 불러오거나 전달할 수 있도록 구현하였습니다.
-</br>
 </br>
 
 ```js
@@ -71,23 +69,37 @@ function doPost(e)
 Google Apps Script에서 FSM을 사용하여 전달받은 데이터를 통해 Google Sheet의 값을 변경해줍니다.
 </br>
 
-* ### MVC 패턴을 활용하여 달력 시스템 개발
+### MVC 패턴을 활용하여 달력 시스템 개발
+</br>
 <div align="center">
+	<img src="https://github.com/user-attachments/assets/0870b37a-fbb4-48b5-853c-b3780d7ca294" width="45%" height="45%"/>
+	</br>
+</div>
+
+<div align="center">
+	<a href="https://github.com/minkimgyu/Solvers/blob/6cff21985dd3084fbb19dcda73d62f201c16f4d0/Solvers/Assets/Scripts/Calendar/CalendarController.cs#L10">Model 코드 보러가기</a>
+	</br>
 	<a href="https://github.com/minkimgyu/Solvers/blob/26d65a638c5ab4a70e8b0aa29d9516227f8584ae/Solvers/Assets/Scripts/Calendar/DateView.cs#L10">View 코드 보러가기</a>
 	</br>
 	<a href="https://github.com/minkimgyu/Solvers/blob/26d65a638c5ab4a70e8b0aa29d9516227f8584ae/Solvers/Assets/Scripts/Calendar/CalendarController.cs#L10C14-L10C33">Controller 코드 보러가기</a>
+	</br>
+	</br>
+	Calendar 구현 시 View, Controller, Model을 나누어 결합도를 낮추었습니다.
 </div>
 </br>
-<div align="center">Calendar 구현 시 View, Controller, Model을 나누어 결합도를 낮추었습니다.</div>
 
-* ### FSM을 사용하여 Scene State 관리
+### FSM을 사용하여 RequestController 개발
 
 <div align="center">
-	<a href="https://github.com/minkimgyu/Solvers/blob/05e86f8df76d3b83978d38b452241eb917fb4ab7/Solvers/Assets/Scripts/Controller/StartSceneController.cs#L10">코드 보러가기</a>
+	<img src="https://github.com/user-attachments/assets/33f93513-7850-4cf3-a3d1-be9a2bdb19c1" width="45%" height="45%"/>
+	</br>
 </div>
-</br>
-<div align="center">FSM을 활용하여 StartScene의 State를 관리했습니다.</div>
-   
+<div align="center">
+	<a href="https://github.com/minkimgyu/Solvers/blob/3cf843ecc21712c45f67cd855c3b683f4e11a120/Solvers/Assets/Scripts/Controller/RequestController.cs#L9">코드 보러가기</a>
+	</br>
+	FSM을 활용하여 사용자의 입력을 처리하는 RequestController을 개발했습니다.
+</div>
+
 </details>
 
 ## 회고
