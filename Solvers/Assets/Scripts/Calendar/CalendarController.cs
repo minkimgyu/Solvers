@@ -7,18 +7,47 @@ using System;
 using SOLVERS.Manager;
 using SOLVERS.DATA;
 
-public struct DateData
+public class DateModel
 {
-    public DateData(int month, DateTime dateTime, string problemNum)
+    public DateModel(DateView view)
     {
-        Month = month;
-        DateTime = dateTime;
-        ProblemNum = problemNum;
+        _view = view;
     }
 
-    public int Month { get; }
-    public DateTime DateTime { get; }
-    public string ProblemNum { get; }
+    DateView _view;
+
+    int _month;
+    DateTime _dateTime;
+    string _problemNum;
+
+    public int Month 
+    { 
+        get => _month;
+        set
+        {
+            _month = value;
+        }
+    }
+
+    public DateTime DateTime
+    {
+        get => _dateTime;
+        set
+        {
+            _dateTime = value;
+            _view.SetDate(_month, _dateTime);
+        }
+    }
+
+    public string ProblemNum
+    {
+        get => _problemNum;
+        set
+        {
+            _problemNum = value;
+            _view.SetSolvedProblem(_problemNum);
+        }
+    }
 }
 
 public class CalendarController : MonoBehaviour
@@ -39,6 +68,7 @@ public class CalendarController : MonoBehaviour
     int Month { get { return _month; } set { _month = value; _monthTxt.text = _month.ToString(); } }
 
     List<DateView> _dates = new List<DateView>();
+    List<DateModel> _models = new List<DateModel>();
 
     const int _rowCount = 5;
     const int _columnCount = 7;
@@ -111,27 +141,23 @@ public class CalendarController : MonoBehaviour
         {
             string problemNum = ReturnProblemNumbers(startDateTime);
 
-            DateData data = new DateData(Month, startDateTime, problemNum);
-            _dates[i].UpdateViewer(data);
+            _models[i].Month = Month;
+            _models[i].DateTime = startDateTime;
+            _models[i].ProblemNum = problemNum;
             startDateTime = startDateTime.AddDays(1);
         }
     }
 
     public void Initialize()
     {
-        DateTime startDateTime = ReturnMonthStartDate();
-
         int count = _rowCount * _columnCount;
         for (int i = 0; i < count; i++)
         {
             DateView date = Instantiate(_datePrefab, _dateParent);
             _dates.Add(date);
-
-            string problemNum = ReturnProblemNumbers(startDateTime);
-            DateData data = new DateData(Month, startDateTime, problemNum);
-            date.UpdateViewer(data);
-
-            startDateTime = startDateTime.AddDays(1);
+            _models.Add(new DateModel(date));
         }
+
+        ResetCalendar();
     }
 }
